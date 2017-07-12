@@ -12,11 +12,10 @@
             android:id="@+id/nav_tags"
             android:icon="@drawable/ic_filter_list_black_24dp"
             android:title="@string/nav_tags"/>
-
-
     </group>
 
-    <item android:title="Communicate" >
+    <item android:title="">
+
         <menu>
 
             <item

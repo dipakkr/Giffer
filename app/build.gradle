@@ -20,6 +20,7 @@ android {
     buildTypes.each {
         it.buildConfigField 'String', 'TENOR_KEY', tenortoken
     }
+    sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
 }
 
 dependencies {

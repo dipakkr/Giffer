@@ -21,7 +21,8 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/header"
-        app:menu="@menu/nav_menu">
+        app:menu="@menu/nav_menu"
+        app:itemTextAppearance="@style/NavigationItemStyle">
     </android.support.design.widget.NavigationView>
 
 
