@@ -3,6 +3,7 @@ package com.dipakkr.github.giffer.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -45,12 +46,12 @@ public class Trending  extends Fragment {
         View view = inflater.inflate(R.layout.frag_trending,container,false);
 
         recyclerView = (RecyclerView)view.findViewById(R.id.rv_trending);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),3);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setClipToPadding(true);
         adapter = new RecyclerAdapter(celebrities,getActivity(),R.layout.item_recycler_view);
-
+        recyclerView.setAdapter(adapter);
         fetchDataFromApi();
         return view;
     }
@@ -62,7 +63,8 @@ public class Trending  extends Fragment {
             public void onResponse(Call<PopularCelebrity> call, Response<PopularCelebrity> response) {
                 celebrities = response.body().getCelebrities();
                 recyclerView.setAdapter(adapter);
-
+                int t = celebrities.size();
+                Log.v("SIZE",String.valueOf(t));
             }
 
             @Override

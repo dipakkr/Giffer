@@ -6,4 +6,8 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorTabSelected">#4c586e</color>
 
+    <color name="pic">#f46a6a</color>
+    <color name="pic2">#eb84c784</color>
+    <color name="pic3">#d852b8eb</color>
+
 </resources>

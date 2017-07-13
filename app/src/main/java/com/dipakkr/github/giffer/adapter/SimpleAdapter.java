@@ -22,7 +22,6 @@ public class SimpleAdapter extends FragmentPagerAdapter {
 
     private String[] tabTitles = new String[]{"Trending", "Recent", "Reactions","Emotions","Memes"};
 
-
     public SimpleAdapter(Context context,FragmentManager fm) {
         super(fm);
         mContext = context;

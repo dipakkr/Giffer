@@ -1,6 +1,7 @@
 package com.dipakkr.github.giffer.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v4.view.LayoutInflaterCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -33,7 +34,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ImageH
 
         public ImageHolder(View itemView) {
             super(itemView);
-            imageView = (ImageView)itemView.findViewById(R.id.item_trending);
+            imageView = (ImageView)itemView.findViewById(R.id.image);
         }
     }
 
@@ -52,13 +53,20 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ImageH
     @Override
     public void onBindViewHolder(ImageHolder holder, int position) {
 
+        if(position % 2 ==0 && position % 3 != 0){
+            holder.imageView.setBackground(context.getResources().getDrawable(R.drawable.back));
+        } else if (position % 3 == 0){
+            holder.imageView.setBackground(context.getResources().getDrawable(R.drawable.back2));
+        } else {
+            holder.imageView.setBackground(context.getResources().getDrawable(R.drawable.back3));
+        }
+
         String BASE_URL = "https://image.tmdb.org/t/p/w500";
 
         if(celebrities != null){
             String img = celebrities.get(position).getmImagePath();
             String IMG_URL = BASE_URL + img ;
             Log.v("IMage " + position, IMG_URL);
-
 
             Glide.with(context).load(IMG_URL)
                     .thumbnail(1f)
