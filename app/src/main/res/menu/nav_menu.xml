@@ -14,7 +14,7 @@
             android:title="@string/nav_tags"/>
     </group>
 
-    <item android:title="">
+    <item android:title="Communicate">
 
         <menu>
 

@@ -10,4 +10,11 @@
 
     <string name="open">Open Drawer</string>
     <string name="close">Close Drawer</string>
+
+    //Tabs name
+    <string name="emotions">Emotions</string>
+    <string name="memes">Memes</string>
+    <string name="reactions">Reactions</string>
+    <string name="recent">Recent</string>
+    <string name="trending">Trending</string>
 </resources>

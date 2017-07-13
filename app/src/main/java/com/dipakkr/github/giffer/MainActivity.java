@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.dipakkr.github.giffer.adapter.SimpleAdapter;
 import com.dipakkr.github.giffer.helper.FontOverride;
 
 import java.lang.reflect.Field;
@@ -24,6 +27,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     DrawerLayout drawerLayout;
     SearchView searchView;
+    TabLayout tabLayout;
+    ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +41,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        viewPager = (ViewPager)findViewById(R.id.viewpager);
+        tabLayout = (TabLayout)findViewById(R.id.tabs);
+        SimpleAdapter adapter = new SimpleAdapter(getApplicationContext(),getSupportFragmentManager());
+        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+        viewPager.setAdapter(adapter);
 
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
@@ -63,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 return true;
 
             case R.id.nav_send :
-                break;
+
 
             case  R.id.nav_setting :
                 return true;
