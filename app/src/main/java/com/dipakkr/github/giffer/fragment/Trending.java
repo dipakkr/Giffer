@@ -1,22 +1,20 @@
 package com.dipakkr.github.giffer.fragment;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.dipakkr.github.giffer.R;
 import com.dipakkr.github.giffer.adapter.RecyclerAdapter;
-import com.dipakkr.github.giffer.adapter.SimpleAdapter;
+import com.dipakkr.github.giffer.helper.ItemDecoration;
 import com.dipakkr.github.giffer.model.Celebrity;
 import com.dipakkr.github.giffer.model.PopularCelebrity;
 import com.dipakkr.github.giffer.rest.ApiClient;
@@ -40,7 +38,7 @@ public class Trending  extends Fragment {
 
     List<Celebrity> celebrities;
 
-    RecyclerAdapter Readapter;
+    RecyclerAdapter adapter;
 
     ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
@@ -49,17 +47,24 @@ public class Trending  extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_trending,container,false);
 
-        recyclerView = (RecyclerView)view.findViewById(R.id.rv_trending);
+        recyclerView = (RecyclerView)view.findViewById(R.id.rv_popular);
         recyclerView.setNestedScrollingEnabled(false);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setClipToPadding(true);
-        Readapter = new RecyclerAdapter(celebrities,getActivity(),R.layout.item_recycler_view);
-        recyclerView.setAdapter(Readapter);
+        adapter = new RecyclerAdapter(celebrities,getActivity(),R.layout.item_recycler_view);
+        recyclerView.addItemDecoration(new ItemDecoration(2,dpToPx(1),true));
+        recyclerView.setAdapter(adapter);
+
         fetchDataFromApi();
         return view;
 
+    }
+
+    public  int dpToPx(int dp) {
+        Resources r = getResources();
+        return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
     }
 
     public void fetchDataFromApi(){
@@ -69,7 +74,7 @@ public class Trending  extends Fragment {
             @Override
             public void onResponse(Call<PopularCelebrity> call, Response<PopularCelebrity> response) {
                 celebrities = response.body().getCelebrities();
-                recyclerView.setAdapter(Readapter);
+                recyclerView.setAdapter(adapter);
                 int t = celebrities.size();
                 Log.v("SIZE",String.valueOf(t));
             }
