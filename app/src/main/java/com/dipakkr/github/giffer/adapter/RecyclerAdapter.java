@@ -12,10 +12,14 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.dipakkr.github.giffer.R;
 import com.dipakkr.github.giffer.model.Celebrity;
 
+import java.net.URL;
 import java.util.List;
+
+import static com.dipakkr.github.giffer.R.id.imageView;
 
 /**
  * Created by root on 7/13/17.
@@ -53,16 +57,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ImageH
     @Override
     public void onBindViewHolder(ImageHolder holder, int position) {
 
-        if(position % 2 ==0 && position % 3 != 0){
-            holder.imageView.setBackground(context.getResources().getDrawable(R.drawable.back));
-        } else if (position % 3 == 0){
-            holder.imageView.setBackground(context.getResources().getDrawable(R.drawable.back2));
-        } else {
-            holder.imageView.setBackground(context.getResources().getDrawable(R.drawable.back3));
-        }
 
         String BASE_URL = "https://image.tmdb.org/t/p/w500";
-
+/*
         if(celebrities != null){
             String img = celebrities.get(position).getmImagePath();
             String IMG_URL = BASE_URL + img ;
@@ -76,12 +73,16 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ImageH
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(holder.imageView);
 
-        }
+        }*/
+        String url = "https://media.tenor.com/images/eb4c4ff13e54cf3a4b5495c2c98c87b1/tenor.gif";
+
+        GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(holder.imageView);
+        Glide.with(context).load(url).placeholder(R.drawable.back2).into(imageViewTarget);
     }
 
     @Override
     public int getItemCount() {
-        return 20;
+        return 15;
     }
 
 }

@@ -7,6 +7,8 @@
 
     <string name="nav_favourites">Favourites</string>
     <string name="nav_tags">Tags</string>
+    <string name="wallpaper">HD Wallpaper</string>
+    <string name="gif">GIF </string>
 
     <string name="open">Open Drawer</string>
     <string name="close">Close Drawer</string>

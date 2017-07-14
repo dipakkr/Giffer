@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.dipakkr.github.giffer.activity.GifActivity;
 import com.dipakkr.github.giffer.adapter.SimpleAdapter;
 import com.dipakkr.github.giffer.helper.FontOverride;
 
@@ -35,9 +36,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
 
         FontOverride.setDefaultFont(this, "MONOSPACE", "my_font.ttf");
-
         setContentView(R.layout.activity_main);
-
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -48,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         viewPager.setAdapter(adapter);
+
 
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
@@ -68,14 +68,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
 
         switch (id){
+
+            case R.id.nav_wallpaper :
+
+                Intent intent = new Intent(MainActivity.this, GifActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.nav_gif :
+
+
             case R.id.nav_fav:
-                return true;
+                break;
 
             case R.id.nav_tags :
-                return true;
+                break;
 
             case R.id.nav_send :
-
+                break;
 
             case  R.id.nav_setting :
                 return true;

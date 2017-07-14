@@ -4,6 +4,17 @@
     <group android:checkableBehavior="single">
 
         <item
+            android:id="@+id/nav_wallpaper"
+            android:title="@string/wallpaper"
+            android:icon="@drawable/ic_wallpaper_black_24dp"/>
+
+        <item
+            android:id="@+id/nav_gif"
+            android:title="@string/gif"
+            android:checked="true"
+            android:icon="@drawable/ic_gif_black_24dp"/>
+
+        <item
             android:id="@+id/nav_fav"
             android:icon="@drawable/ic_beenhere_black_24dp"
             android:title="@string/nav_favourites"/>
@@ -12,11 +23,17 @@
             android:id="@+id/nav_tags"
             android:icon="@drawable/ic_filter_list_black_24dp"
             android:title="@string/nav_tags"/>
+
     </group>
 
     <item android:title="Communicate">
 
         <menu>
+
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@drawable/ic_person_black_24dp"
+                android:title="@string/about"/>
 
             <item
                 android:id="@+id/nav_setting"
@@ -29,12 +46,8 @@
                 android:icon="@drawable/ic_share_black_24dp"
                 android:title="@string/send" />
 
-            <item
-                android:id="@+id/nav_about"
-                android:icon="@drawable/ic_person_black_24dp"
-                android:title="@string/about"/>
-
         </menu>
+
     </item>
 
 </menu>

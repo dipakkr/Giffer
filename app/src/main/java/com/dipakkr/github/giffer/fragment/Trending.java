@@ -2,7 +2,9 @@ package com.dipakkr.github.giffer.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +16,7 @@ import android.widget.Toast;
 
 import com.dipakkr.github.giffer.R;
 import com.dipakkr.github.giffer.adapter.RecyclerAdapter;
+import com.dipakkr.github.giffer.adapter.SimpleAdapter;
 import com.dipakkr.github.giffer.model.Celebrity;
 import com.dipakkr.github.giffer.model.PopularCelebrity;
 import com.dipakkr.github.giffer.rest.ApiClient;
@@ -37,7 +40,8 @@ public class Trending  extends Fragment {
 
     List<Celebrity> celebrities;
 
-    RecyclerAdapter adapter;
+    RecyclerAdapter Readapter;
+
     ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
     @Nullable
@@ -46,15 +50,18 @@ public class Trending  extends Fragment {
         View view = inflater.inflate(R.layout.frag_trending,container,false);
 
         recyclerView = (RecyclerView)view.findViewById(R.id.rv_trending);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),3);
+        recyclerView.setNestedScrollingEnabled(false);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setClipToPadding(true);
-        adapter = new RecyclerAdapter(celebrities,getActivity(),R.layout.item_recycler_view);
-        recyclerView.setAdapter(adapter);
+        Readapter = new RecyclerAdapter(celebrities,getActivity(),R.layout.item_recycler_view);
+        recyclerView.setAdapter(Readapter);
         fetchDataFromApi();
         return view;
+
     }
+
     public void fetchDataFromApi(){
 
         Call<PopularCelebrity> popularCelebrityCall = apiInterface.getPopCelebrity(API_KEY);
@@ -62,7 +69,7 @@ public class Trending  extends Fragment {
             @Override
             public void onResponse(Call<PopularCelebrity> call, Response<PopularCelebrity> response) {
                 celebrities = response.body().getCelebrities();
-                recyclerView.setAdapter(adapter);
+                recyclerView.setAdapter(Readapter);
                 int t = celebrities.size();
                 Log.v("SIZE",String.valueOf(t));
             }
