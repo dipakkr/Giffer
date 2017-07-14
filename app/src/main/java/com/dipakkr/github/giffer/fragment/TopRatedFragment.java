@@ -11,10 +11,12 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.dipakkr.github.giffer.R;
 import com.dipakkr.github.giffer.adapter.WallPaperRecyclerAdapter;
 import com.dipakkr.github.giffer.helper.ItemDecoration;
+import com.dipakkr.github.giffer.helper.RecyclerViewClickListener;
 import com.dipakkr.github.giffer.model.Celebrity;
 import com.dipakkr.github.giffer.model.PopularCelebrity;
 import com.dipakkr.github.giffer.rest.ApiClient;
@@ -42,6 +44,7 @@ public class TopRatedFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.wall_frag_toprated,container,false);
+
         recyclerView = (RecyclerView)view.findViewById(R.id.rv_rating);
         recyclerView.setNestedScrollingEnabled(false);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),3);
@@ -53,9 +56,26 @@ public class TopRatedFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
+
         fetchDataFromApi();
+        handleItemClick();
 
         return view;
+    }
+
+    private void handleItemClick(){
+        recyclerView.addOnItemTouchListener(new RecyclerViewClickListener(getActivity(),
+                recyclerView, new RecyclerViewClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                // Handle clicks
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+
+            }
+        }));
     }
 
     public  int dpToPx(int dp) {
@@ -73,6 +93,7 @@ public class TopRatedFragment extends Fragment {
                 recyclerView.setAdapter(adapter);
                 int t = celebrities.size();
                 Log.v("SIZE",String.valueOf(t));
+                Toast.makeText(getActivity(), "Data Fetched", Toast.LENGTH_SHORT).show();
             }
 
             @Override

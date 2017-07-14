@@ -84,7 +84,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.nav_send :
-                break;
+
+                drawerLayout.closeDrawer(GravityCompat.START);
+                Intent send = new Intent();
+                send.setType(Intent.ACTION_SEND);
+                send.setType("text/plain");
+                startActivity(Intent.createChooser(send,"Share App, Spread Words"));
+                return true ;
+
 
             case  R.id.nav_setting :
                 return true;

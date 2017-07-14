@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import com.dipakkr.github.giffer.R;
 import com.dipakkr.github.giffer.adapter.RecyclerAdapter;
 import com.dipakkr.github.giffer.helper.ItemDecoration;
+import com.dipakkr.github.giffer.helper.RecyclerViewClickListener;
 import com.dipakkr.github.giffer.model.Celebrity;
 import com.dipakkr.github.giffer.model.PopularCelebrity;
 import com.dipakkr.github.giffer.rest.ApiClient;
@@ -47,7 +48,7 @@ public class Trending  extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_trending,container,false);
 
-        recyclerView = (RecyclerView)view.findViewById(R.id.rv_popular);
+        recyclerView = (RecyclerView)view.findViewById(R.id.rv_trending);
         recyclerView.setNestedScrollingEnabled(false);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2);
         recyclerView.setLayoutManager(gridLayoutManager);
@@ -58,8 +59,24 @@ public class Trending  extends Fragment {
         recyclerView.setAdapter(adapter);
 
         fetchDataFromApi();
-        return view;
+        handleItemClick();
 
+        return view;
+    }
+
+    private void handleItemClick(){
+        recyclerView.addOnItemTouchListener(new RecyclerViewClickListener(getActivity(),
+                recyclerView, new RecyclerViewClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                // Handle clicks
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+
+            }
+        }));
     }
 
     public  int dpToPx(int dp) {
