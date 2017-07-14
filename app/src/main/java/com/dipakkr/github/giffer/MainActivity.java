@@ -20,6 +20,7 @@ import android.view.MenuItem;
 
 import com.dipakkr.github.giffer.activity.GifActivity;
 import com.dipakkr.github.giffer.adapter.SimpleAdapter;
+import com.dipakkr.github.giffer.adapter.WallPaperTabAdapter;
 import com.dipakkr.github.giffer.helper.FontOverride;
 
 import java.lang.reflect.Field;
@@ -43,11 +44,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         viewPager = (ViewPager)findViewById(R.id.viewpager);
         tabLayout = (TabLayout)findViewById(R.id.tabs);
-        SimpleAdapter adapter = new SimpleAdapter(getApplicationContext(),getSupportFragmentManager());
+        WallPaperTabAdapter adapter = new WallPaperTabAdapter(getApplicationContext(),getSupportFragmentManager());
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         viewPager.setAdapter(adapter);
-
 
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
@@ -70,13 +70,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (id){
 
             case R.id.nav_wallpaper :
-
-                Intent intent = new Intent(MainActivity.this, GifActivity.class);
-                startActivity(intent);
                 break;
 
             case R.id.nav_gif :
-
+                Intent intent = new Intent(MainActivity.this,GifActivity.class);
+                startActivity(intent);
+                break;
 
             case R.id.nav_fav:
                 break;
