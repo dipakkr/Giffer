@@ -2,7 +2,6 @@ package com.dipakkr.github.giffer.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,6 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.dipakkr.github.giffer.R;
-import com.dipakkr.github.giffer.model.Celebrity;
 
 import java.util.List;
 
@@ -21,12 +19,11 @@ import java.util.List;
 
 public class WallPaperRecyclerAdapter extends RecyclerView.Adapter<WallPaperRecyclerAdapter.WallPaperHolder> {
 
-    List<Celebrity> celebrities;
+
     private int columnLayout;
     private Context context;
 
-    public WallPaperRecyclerAdapter(List<Celebrity> celebrities, Context context, int columnLayout) {
-        this.celebrities = celebrities;
+    public WallPaperRecyclerAdapter(Context context, int columnLayout) {
         this.context = context;
         this.columnLayout = columnLayout;
     }

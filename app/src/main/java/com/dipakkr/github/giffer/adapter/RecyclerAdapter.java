@@ -1,25 +1,17 @@
 package com.dipakkr.github.giffer.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.support.v4.view.LayoutInflaterCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.dipakkr.github.giffer.R;
-import com.dipakkr.github.giffer.model.Celebrity;
 
-import java.net.URL;
 import java.util.List;
-
-import static com.dipakkr.github.giffer.R.id.imageView;
 
 /**
  * Created by root on 7/13/17.
@@ -27,8 +19,6 @@ import static com.dipakkr.github.giffer.R.id.imageView;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ImageHolder> {
 
-
-    List<Celebrity> celebrities;
     private int columnLayout;
     private Context context;
 
@@ -42,8 +32,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ImageH
         }
     }
 
-    public RecyclerAdapter(List<Celebrity> celebrities, Context context,int columnLayout){
-        this.celebrities = celebrities;
+    public RecyclerAdapter( Context context,int columnLayout){
         this.context =context;
         this.columnLayout = columnLayout;
     }
