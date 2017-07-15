@@ -57,23 +57,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ImageH
     @Override
     public void onBindViewHolder(ImageHolder holder, int position) {
 
-
-        String BASE_URL = "https://image.tmdb.org/t/p/w500";
-/*
-        if(celebrities != null){
-            String img = celebrities.get(position).getmImagePath();
-            String IMG_URL = BASE_URL + img ;
-            Log.v("IMage " + position, IMG_URL);
-
-            Glide.with(context).load(IMG_URL)
-                    .thumbnail(1f)
-                    .crossFade()
-                    //Center Crop fits the image to image view
-                    .centerCrop()
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .into(holder.imageView);
-
-        }*/
         String url = "https://media.tenor.com/images/eb4c4ff13e54cf3a4b5495c2c98c87b1/tenor.gif";
 
         GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(holder.imageView);
@@ -86,3 +69,4 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ImageH
     }
 
 }
+

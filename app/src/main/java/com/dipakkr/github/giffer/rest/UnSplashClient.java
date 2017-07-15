@@ -4,12 +4,12 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by root on 7/14/17.
+ * Created by root on 7/15/17.
  */
 
-public class ApiClient {
+public class UnSplashClient {
 
-    public static final String BASE_URL = "http://api.themoviedb.org/3/";
+    public static final String BASE_URL = "https://api.unsplash.com/";
     private static Retrofit retrofit = null;
 
 

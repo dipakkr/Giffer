@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "978637169053",
+    "firebase_url": "https://giffer-83814.firebaseio.com",
+    "project_id": "giffer-83814",
+    "storage_bucket": "giffer-83814.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:978637169053:android:2b99af6ff3a4ca56",
+        "android_client_info": {
+          "package_name": "com.dipakkr.github.giffer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "978637169053-k4vui131b1u21gjqa0gaotg5vqcocn7l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dipakkr.github.giffer",
+            "certificate_hash": "ea330d9318aba61e1a499cb54c1a030b2b965c7b"
+          }
+        },
+        {
+          "client_id": "978637169053-85horcldnjs78bkesebnivcired3sls4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi2SHgzdzfHi1MEPJNVvFwTw0bZH2UpIs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "978637169053-85horcldnjs78bkesebnivcired3sls4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

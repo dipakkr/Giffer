@@ -19,6 +19,8 @@ android {
     }
     buildTypes.each {
         it.buildConfigField 'String', 'TENOR_KEY', tenortoken
+        it.buildConfigField 'String', 'UNS_APP_ID', unsplashappid
+        it.buildConfigField 'String', 'UNS_SECRET_ID', unsplashsecretid
     }
     sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
 }
@@ -30,14 +32,17 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-
-    //
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.android.support:design:25.3.1'
     compile 'com.squareup.retrofit2:retrofit:2.0.2'
     compile 'com.squareup.retrofit2:converter-gson:2.0.2'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.android.support:recyclerview-v7:25.3.1'
-
+    compile 'com.google.firebase:firebase-core:10.0.1'
+    compile 'com.google.firebase:firebase-ads:10.0.1'
     testCompile 'junit:junit:4.12'
 }
+
+
+
+apply plugin: 'com.google.gms.google-services'

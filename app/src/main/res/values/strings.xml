@@ -21,4 +21,7 @@
     <string name="reactions">Reactions</string>
     <string name="recent">Recent</string>
     <string name="trending">Trending</string>
+
+    <string name="banner_ad_unit_id">ca-app-pub-4350473558500023/2995843997</string>
+
 </resources>

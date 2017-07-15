@@ -40,7 +40,6 @@ public class WallPaperRecyclerAdapter extends RecyclerView.Adapter<WallPaperRecy
             super(view);
             imageView = (ImageView) view.findViewById(R.id.image);
         }
-
     }
 
     @Override
@@ -54,24 +53,26 @@ public class WallPaperRecyclerAdapter extends RecyclerView.Adapter<WallPaperRecy
 
         String BASE_URL = "https://image.tmdb.org/t/p/w500";
 
+        String TEST_URL = "https://images.unsplash.com/photo-1465865523598-a834aac5d3fa?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&s=f7984651545f9054e7803bb0dcae91e4";
+/*
+
         if (celebrities != null) {
             String img = celebrities.get(position).getmImagePath();
             String IMG_URL = BASE_URL + img;
-            Log.v("IMage " + position, IMG_URL);
-
-            Glide.with(context).load(IMG_URL)
-                    .thumbnail(1f)
-                    .crossFade()
-                    //Center Crop fits the image to image view
-                    .centerCrop()
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .into(holder.imageView);
-
+            Log.v("Image " + position, IMG_URL);
         }
+*/
+
+        Glide.with(context).load(TEST_URL)
+                .crossFade()
+                .centerCrop()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(holder.imageView);
+
     }
         @Override
         public int getItemCount () {
-            return 20;
+            return 200;
         }
 
     }

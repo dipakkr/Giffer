@@ -10,5 +10,4 @@
         android:src="@drawable/ic_block_black_24dp"
         android:layout_gravity="center"/>
 
-
 </android.support.design.widget.CoordinatorLayout>

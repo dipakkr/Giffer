@@ -11,7 +11,6 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.dipakkr.github.giffer.R;
 import com.dipakkr.github.giffer.adapter.WallPaperRecyclerAdapter;
@@ -19,8 +18,8 @@ import com.dipakkr.github.giffer.helper.ItemDecoration;
 import com.dipakkr.github.giffer.helper.RecyclerViewClickListener;
 import com.dipakkr.github.giffer.model.Celebrity;
 import com.dipakkr.github.giffer.model.PopularCelebrity;
-import com.dipakkr.github.giffer.rest.ApiClient;
-import com.dipakkr.github.giffer.rest.ApiInterface;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import java.util.List;
 
@@ -37,8 +36,9 @@ public class TopRatedFragment extends Fragment {
     RecyclerView recyclerView;
     WallPaperRecyclerAdapter adapter;
     List<Celebrity> celebrities;
-    ApiInterface apiInterface;
 
+
+    private AdView mAdView;
 
     @Nullable
     @Override
@@ -55,10 +55,12 @@ public class TopRatedFragment extends Fragment {
         recyclerView.addItemDecoration(new ItemDecoration(2,dpToPx(1),true));
         recyclerView.setAdapter(adapter);
 
-        apiInterface = ApiClient.getClient().create(ApiInterface.class);
-
         fetchDataFromApi();
         handleItemClick();
+
+        mAdView = (AdView) view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         return view;
     }
@@ -85,21 +87,6 @@ public class TopRatedFragment extends Fragment {
 
     public void fetchDataFromApi(){
 
-        Call<PopularCelebrity> popularCelebrityCall = apiInterface.getPopCelebrity(getResources().getString(R.string.API_KEY_TEST));
-        popularCelebrityCall.enqueue(new Callback<PopularCelebrity>() {
-            @Override
-            public void onResponse(Call<PopularCelebrity> call, Response<PopularCelebrity> response) {
-                celebrities = response.body().getCelebrities();
-                recyclerView.setAdapter(adapter);
-                int t = celebrities.size();
-                Log.v("SIZE",String.valueOf(t));
-                Toast.makeText(getActivity(), "Data Fetched", Toast.LENGTH_SHORT).show();
-            }
 
-            @Override
-            public void onFailure(Call<PopularCelebrity> call, Throwable t) {
-
-            }
-        });
     }
 }

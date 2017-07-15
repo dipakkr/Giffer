@@ -17,15 +17,8 @@ import com.dipakkr.github.giffer.adapter.RecyclerAdapter;
 import com.dipakkr.github.giffer.helper.ItemDecoration;
 import com.dipakkr.github.giffer.helper.RecyclerViewClickListener;
 import com.dipakkr.github.giffer.model.Celebrity;
-import com.dipakkr.github.giffer.model.PopularCelebrity;
-import com.dipakkr.github.giffer.rest.ApiClient;
-import com.dipakkr.github.giffer.rest.ApiInterface;
 
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Created by root on 7/13/17.
@@ -41,7 +34,6 @@ public class Trending  extends Fragment {
 
     RecyclerAdapter adapter;
 
-    ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
     @Nullable
     @Override
@@ -86,20 +78,5 @@ public class Trending  extends Fragment {
 
     public void fetchDataFromApi(){
 
-        Call<PopularCelebrity> popularCelebrityCall = apiInterface.getPopCelebrity(API_KEY);
-        popularCelebrityCall.enqueue(new Callback<PopularCelebrity>() {
-            @Override
-            public void onResponse(Call<PopularCelebrity> call, Response<PopularCelebrity> response) {
-                celebrities = response.body().getCelebrities();
-                recyclerView.setAdapter(adapter);
-                int t = celebrities.size();
-                Log.v("SIZE",String.valueOf(t));
-            }
-
-            @Override
-            public void onFailure(Call<PopularCelebrity> call, Throwable t) {
-
-            }
-        });
     }
 }
