@@ -77,7 +77,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ImageH
         String url = "https://media.tenor.com/images/eb4c4ff13e54cf3a4b5495c2c98c87b1/tenor.gif";
 
         GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(holder.imageView);
-        Glide.with(context).load(url).placeholder(R.drawable.back2).into(imageViewTarget);
+        Glide.with(context).load(url).centerCrop().placeholder(R.drawable.back2).into(imageViewTarget);
     }
 
     @Override

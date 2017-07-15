@@ -50,7 +50,7 @@ public class Trending  extends Fragment {
 
         recyclerView = (RecyclerView)view.findViewById(R.id.rv_trending);
         recyclerView.setNestedScrollingEnabled(false);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),3);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setClipToPadding(true);
@@ -60,8 +60,13 @@ public class Trending  extends Fragment {
 
         fetchDataFromApi();
         handleItemClick();
-
         return view;
+
+    }
+
+    public  int dpToPx(int dp) {
+        Resources r = getResources();
+        return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
     }
 
     private void handleItemClick(){
@@ -77,11 +82,6 @@ public class Trending  extends Fragment {
 
             }
         }));
-    }
-
-    public  int dpToPx(int dp) {
-        Resources r = getResources();
-        return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
     }
 
     public void fetchDataFromApi(){
