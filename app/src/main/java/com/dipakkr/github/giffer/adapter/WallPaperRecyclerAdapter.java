@@ -63,7 +63,7 @@ public class WallPaperRecyclerAdapter extends RecyclerView.Adapter<WallPaperRecy
     }
         @Override
         public int getItemCount () {
-            return 200;
+            return 21;
         }
 
     }

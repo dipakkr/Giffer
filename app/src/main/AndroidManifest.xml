@@ -26,6 +26,9 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
+        <activity android:name=".activity.GifSearch"
+            android:label="@string/title_gif_search"
+            android:parentActivityName=".activity.GifActivity"/>
     </application>
 
 </manifest>

@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.dipakkr.github.giffer.R;
+import com.dipakkr.github.giffer.model.GifItem;
 
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ImageH
 
     private int columnLayout;
     private Context context;
+    private List<GifItem> gifItems;
 
     public class ImageHolder extends RecyclerView.ViewHolder{
 
@@ -32,7 +34,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ImageH
         }
     }
 
-    public RecyclerAdapter( Context context,int columnLayout){
+    public RecyclerAdapter(List<GifItem> gifItems, Context context,int columnLayout){
+        this.gifItems = gifItems;
         this.context =context;
         this.columnLayout = columnLayout;
     }
@@ -48,14 +51,32 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ImageH
 
         String url = "https://media.tenor.com/images/eb4c4ff13e54cf3a4b5495c2c98c87b1/tenor.gif";
 
-        GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(holder.imageView);
-        Glide.with(context).load(url).centerCrop().placeholder(R.drawable.back2).into(imageViewTarget);
+        if(gifItems != null){
+            if(gifItems.size() > 0){
+                String IMG_URL = gifItems.get(position).getmGifItem();
+
+                GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(holder.imageView);
+                Glide.with(context).load(IMG_URL).placeholder(R.drawable.back2).into(imageViewTarget);
+            }
+            }
+        else {
+            GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(holder.imageView);
+            Glide.with(context).load(url).placeholder(R.drawable.back2).into(imageViewTarget);
+        }
+
+
     }
 
     @Override
     public int getItemCount() {
-        return 15;
-    }
+        if (gifItems != null){
 
+            if(gifItems.size() > 0){
+
+                return gifItems.size();
+            }
+        }
+        return 40;
+    }
 }
 

@@ -15,6 +15,7 @@ import com.dipakkr.github.giffer.R;
 import com.dipakkr.github.giffer.adapter.RecyclerAdapter;
 import com.dipakkr.github.giffer.helper.ItemDecoration;
 import com.dipakkr.github.giffer.helper.RecyclerViewClickListener;
+import com.dipakkr.github.giffer.model.GifItem;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -35,6 +36,8 @@ public class Trending  extends Fragment {
 
     private AdView mAdView;
 
+    private List<GifItem> gifItems;
+
 
     @Nullable
     @Override
@@ -47,7 +50,7 @@ public class Trending  extends Fragment {
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setClipToPadding(true);
-        adapter = new RecyclerAdapter(getActivity(),R.layout.item_recycler_view);
+        adapter = new RecyclerAdapter(gifItems, getActivity(),R.layout.item_recycler_view);
         recyclerView.addItemDecoration(new ItemDecoration(2,dpToPx(1),true));
         recyclerView.setAdapter(adapter);
 
