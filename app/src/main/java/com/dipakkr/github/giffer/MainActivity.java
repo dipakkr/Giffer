@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if(id == R.id.movie_search){
+        if(id == R.id.wallpaper_search){
 
         }
 

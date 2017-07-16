@@ -3,6 +3,7 @@ package com.dipakkr.github.giffer.fragment;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.compat.BuildConfig;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,10 +16,15 @@ import com.dipakkr.github.giffer.R;
 import com.dipakkr.github.giffer.adapter.WallPaperRecyclerAdapter;
 import com.dipakkr.github.giffer.helper.ItemDecoration;
 import com.dipakkr.github.giffer.helper.RecyclerViewClickListener;
+import com.dipakkr.github.giffer.model.ImageResponse;
+import com.dipakkr.github.giffer.rest.UnSplashClient;
+import com.dipakkr.github.giffer.rest.UnsplashInterface;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
 import java.util.List;
+
+import retrofit2.Call;
 
 /**
  * Created by deepak on 7/15/17.
@@ -31,10 +37,14 @@ public class TopRatedFragment extends Fragment {
 
     private AdView mAdView;
 
+    UnsplashInterface apiInterface;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.wall_frag_toprated,container,false);
+
+        apiInterface = UnSplashClient.getClient().create(UnsplashInterface.class);
 
         recyclerView = (RecyclerView)view.findViewById(R.id.rv_rating);
         recyclerView.setNestedScrollingEnabled(false);
@@ -77,7 +87,6 @@ public class TopRatedFragment extends Fragment {
     }
 
     public void fetchDataFromApi(){
-
 
     }
 }
