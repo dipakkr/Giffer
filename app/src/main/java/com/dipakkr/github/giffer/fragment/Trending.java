@@ -15,6 +15,8 @@ import com.dipakkr.github.giffer.R;
 import com.dipakkr.github.giffer.adapter.RecyclerAdapter;
 import com.dipakkr.github.giffer.helper.ItemDecoration;
 import com.dipakkr.github.giffer.helper.RecyclerViewClickListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import java.util.List;
 
@@ -31,6 +33,8 @@ public class Trending  extends Fragment {
 
     RecyclerAdapter adapter;
 
+    private AdView mAdView;
+
 
     @Nullable
     @Override
@@ -39,7 +43,7 @@ public class Trending  extends Fragment {
 
         recyclerView = (RecyclerView)view.findViewById(R.id.rv_trending);
         recyclerView.setNestedScrollingEnabled(false);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),3);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setClipToPadding(true);
@@ -47,9 +51,19 @@ public class Trending  extends Fragment {
         recyclerView.addItemDecoration(new ItemDecoration(2,dpToPx(1),true));
         recyclerView.setAdapter(adapter);
 
+        intializeAd(view);
+
         fetchDataFromApi();
         handleItemClick();
         return view;
+
+    }
+
+    private void intializeAd(View view){
+
+        mAdView = (AdView)view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
     }
 

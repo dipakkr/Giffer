@@ -112,6 +112,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
