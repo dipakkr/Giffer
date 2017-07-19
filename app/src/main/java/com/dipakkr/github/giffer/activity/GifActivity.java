@@ -13,7 +13,6 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,14 +21,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.dipakkr.github.giffer.MainActivity;
 import com.dipakkr.github.giffer.R;
 import com.dipakkr.github.giffer.adapter.SimpleAdapter;
-import com.dipakkr.github.giffer.adapter.WallPaperTabAdapter;
 import com.dipakkr.github.giffer.helper.HttpHandler;
 import com.dipakkr.github.giffer.model.Celebrity;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -63,6 +58,8 @@ public class GifActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gif);
+
+        setTitle("Giffer-Gifs");
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -116,6 +113,7 @@ public class GifActivity extends AppCompatActivity {
                 fetchurl="https://api.tenor.com/v1/search?tag="+query+"&key="+key;
                 Intent i=new Intent(GifActivity.this,GifSearch.class);
                 i.putExtra("fetch",fetchurl);
+                i.putExtra("name",query);
                 startActivity(i);
                 //new getgifs().execute();
                 //       searchView.setIconified(true);

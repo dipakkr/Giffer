@@ -14,7 +14,6 @@ import android.widget.Toast;
 import com.dipakkr.github.giffer.R;
 import com.dipakkr.github.giffer.adapter.RecyclerAdapter;
 import com.dipakkr.github.giffer.helper.HttpHandler;
-import com.dipakkr.github.giffer.model.Celebrity;
 import com.dipakkr.github.giffer.model.GifItem;
 
 import org.json.JSONArray;
@@ -36,7 +35,7 @@ public class GifSearch extends AppCompatActivity {
     private List<GifItem> gifsearch = new ArrayList<>();
 
     //int cn=2;
-    String fetchurl;
+    String fetchurl,query;
     ProgressDialog pdiaglog;
     String TAG="TAG: ";
 
@@ -54,6 +53,8 @@ public class GifSearch extends AppCompatActivity {
 
         Intent i=getIntent();
         fetchurl=i.getStringExtra("fetch");
+        query=i.getStringExtra("name");
+        setTitle(query+" Gifs");
         new getgifs().execute();
 
     }
