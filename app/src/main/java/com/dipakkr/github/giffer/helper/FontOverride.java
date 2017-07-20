@@ -32,6 +32,4 @@ public class FontOverride {
             e.printStackTrace();
         }
     }
-
-
 }

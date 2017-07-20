@@ -69,6 +69,7 @@ public class GifSearch extends AppCompatActivity {
             pdiaglog.setMessage("Hold on !! Getting GIF");
             pdiaglog.setCancelable(false);
             pdiaglog.show();
+
         }
 
         @Override

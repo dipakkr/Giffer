@@ -29,6 +29,16 @@
         <activity android:name=".activity.GifSearch"
             android:label="@string/title_gif_search"
             android:parentActivityName=".activity.GifActivity"/>
+
+        <activity android:name=".activity.GifDetailActivity"
+            android:excludeFromRecents="true"
+            android:theme="@style/Theme.AppCompat.Dialog"/>
+
+        <activity android:name=".activity.WallpaperDetail"
+            android:label="WallPaper"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.ActionBar.Transparent"/>
+
     </application>
 
 </manifest>

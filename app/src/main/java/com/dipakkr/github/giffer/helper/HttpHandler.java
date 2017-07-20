@@ -1,5 +1,6 @@
 package com.dipakkr.github.giffer.helper;
 
+import android.net.Uri;
 import android.util.Log;
 
 import java.io.BufferedInputStream;
@@ -10,7 +11,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
+import java.net.URI;
 import java.net.URL;
+
+import retrofit2.http.Url;
 
 
 public class HttpHandler {
@@ -18,6 +22,23 @@ public class HttpHandler {
     private static final String TAG = HttpHandler.class.getSimpleName();
 
     public HttpHandler() {
+
+    }
+
+    public String createUrl(String gif_type){
+
+        String BASE_URL = "https://api.tenor.com/v1/";
+
+        Uri uri = Uri.parse(BASE_URL)
+                .buildUpon()
+                .appendPath(gif_type)
+                .appendQueryParameter("key","2MQDIYTCQ99F")
+                .appendQueryParameter("limit","50")
+                .build();
+
+        String responseurl = uri.toString();
+
+        return responseurl;
     }
 
     public String makeServiceCall(String reqUrl) {
@@ -42,6 +63,7 @@ public class HttpHandler {
     }
 
     private String convertStreamToString(InputStream is) {
+
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
         StringBuilder sb = new StringBuilder();
 

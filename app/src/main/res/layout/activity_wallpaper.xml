@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/wal"
+        android:fitsSystemWindows="true"
+        android:id="@+id/wall"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        android:padding="10dp"
+        android:background="@color/cpr"
+        android:layout_height="wrap_content">
+
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_share_black_24dp"
+                app:layout_anchorGravity="bottom|right"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="58dp" />
+
+
+            <ImageButton
+                android:id="@+id/download"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_cloud_download_black_24dp"
+                app:layout_anchorGravity="bottom|left"
+                android:layout_alignTop="@+id/imageButton"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="67dp" />
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

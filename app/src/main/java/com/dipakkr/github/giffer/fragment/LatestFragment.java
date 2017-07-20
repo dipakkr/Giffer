@@ -1,5 +1,6 @@
 package com.dipakkr.github.giffer.fragment;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.dipakkr.github.giffer.R;
+import com.dipakkr.github.giffer.activity.WallpaperDetail;
 import com.dipakkr.github.giffer.adapter.WallPaperRecyclerAdapter;
 import com.dipakkr.github.giffer.helper.ItemDecoration;
 import com.dipakkr.github.giffer.helper.RecyclerViewClickListener;
@@ -70,7 +72,6 @@ public class LatestFragment extends Fragment {
         fetchDataFromApi();
         handleItemClick();
 
-
         return view;
     }
 
@@ -79,7 +80,7 @@ public class LatestFragment extends Fragment {
                 recyclerView, new RecyclerViewClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                // Handle clicks
+                startActivity(new Intent(getActivity(), WallpaperDetail.class));
             }
 
             @Override
