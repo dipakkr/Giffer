@@ -33,6 +33,7 @@ public class HttpHandler {
                 .buildUpon()
                 .appendPath(gif_type)
                 .appendQueryParameter("key","2MQDIYTCQ99F")
+                .appendQueryParameter("limit","50")
                 .build();
 
         String responseurl = uri.toString();

@@ -1,6 +1,7 @@
 package com.dipakkr.github.giffer.fragment;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.dipakkr.github.giffer.R;
+import com.dipakkr.github.giffer.activity.GifDetailActivity;
 import com.dipakkr.github.giffer.adapter.RecyclerAdapter;
 import com.dipakkr.github.giffer.helper.HttpHandler;
 import com.dipakkr.github.giffer.helper.ItemDecoration;
@@ -47,6 +49,7 @@ public class Trending  extends Fragment {
     private List<GifItem> gifItems = new ArrayList<>();
 
     ProgressDialog  mDialog;
+    String url;
 
 
     @Nullable
@@ -92,7 +95,10 @@ public class Trending  extends Fragment {
                 recyclerView, new RecyclerViewClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                // Handle clicks
+                String url = gifItems.get(position).getmGifItem();
+                Intent detailGif = new Intent(getActivity(),GifDetailActivity.class);
+                detailGif.putExtra("gifurl",url);
+                startActivity(detailGif);
             }
 
             @Override
@@ -134,7 +140,7 @@ public class Trending  extends Fragment {
                         for(int j = 0; j< media.length(); j ++){
                             JSONObject med = media.getJSONObject(j);
                             JSONObject tiny = med.getJSONObject("tinygif");
-                            String url = tiny.getString("url");
+                             url = tiny.getString("url");
 
                             GifItem gifItem = new GifItem(url);
                             gifItems.add(gifItem);

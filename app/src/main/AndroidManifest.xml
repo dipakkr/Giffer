@@ -29,6 +29,12 @@
         <activity android:name=".activity.GifSearch"
             android:label="@string/title_gif_search"
             android:parentActivityName=".activity.GifActivity"/>
+
+        <activity android:name=".activity.GifDetailActivity"
+            android:excludeFromRecents="true"
+            android:theme="@style/Theme.AppCompat.Dialog"/>
+
     </application>
+
 
 </manifest>
