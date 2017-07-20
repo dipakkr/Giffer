@@ -1,19 +1,17 @@
 package com.dipakkr.github.giffer.adapter;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.dipakkr.github.giffer.R;
+import com.dipakkr.github.giffer.activity.GifDetailActivity;
 import com.dipakkr.github.giffer.model.GifItem;
 
 import java.util.List;
@@ -72,31 +70,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ImageH
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Recycle Click" + position, Toast.LENGTH_SHORT).show();
-
-                AlertDialog.Builder alert= new AlertDialog.Builder(context);
-                alert.setTitle("Share this Gif?");
-                alert.setIcon(R.drawable.ic_share_black_24dp);
-                alert.setNegativeButton("Yes",new DialogInterface.OnClickListener()
-                {
-                    public void onClick(DialogInterface dialog, int which)
-                    {
-                        Intent share=new Intent();
-                        share.setAction(Intent.ACTION_SEND);
-                        share.putExtra(Intent.EXTRA_TEXT,gifItems.get(position).getmGifItem());
-                        share.setType("text/plain");
-                        context.startActivity(Intent.createChooser(share,"Share Gif via?"));
-                    }
-                });
-
-                alert.setPositiveButton("No",new DialogInterface.OnClickListener()
-                {
-                    public void onClick(DialogInterface dialog, int which)
-                    {
-                        dialog.cancel();
-                    }
-                });
-                alert.show();
+                Intent i =new Intent(context, GifDetailActivity.class);
+                i.putExtra("gifurl",gifItems.get(position).getmGifItem());
+                context.startActivity(i);
             }
         });
     }

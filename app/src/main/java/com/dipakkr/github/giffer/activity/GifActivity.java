@@ -69,6 +69,10 @@ public class GifActivity extends AppCompatActivity {
         key=getResources().getString(R.string.tkey);
         autourl = "https://api.tenor.com/v1/autocomplete?tag=&key="+key;
         new updatesuggestions().execute();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
     }
 
     private void setupTabs(){
@@ -102,7 +106,6 @@ public class GifActivity extends AppCompatActivity {
 
                 String searchString=(String)parent.getItemAtPosition(position);
                 auto.setText(""+searchString);
-                //Toast.makeText(MainActivity.this, "you clicked "+searchString, Toast.LENGTH_LONG).show();
 
             }
         });
@@ -115,10 +118,6 @@ public class GifActivity extends AppCompatActivity {
                 i.putExtra("fetch",fetchurl);
                 i.putExtra("name",query);
                 startActivity(i);
-                //new getgifs().execute();
-                //       searchView.setIconified(true);
-                //   InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
-                //  imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
                 return true;
             }
 
@@ -204,6 +203,12 @@ public class GifActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         suggestions.clear();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
 }

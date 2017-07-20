@@ -1,7 +1,6 @@
 package com.dipakkr.github.giffer.activity;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.dipakkr.github.giffer.R;
 
@@ -29,7 +27,7 @@ public class GifDetailActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_gif);
 
-        this.setFinishOnTouchOutside(false);
+      //  this.setFinishOnTouchOutside(false);
 
         Intent intent = getIntent();
         url = intent.getStringExtra("gifurl");
@@ -44,7 +42,7 @@ public class GifDetailActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Intent send = new Intent();
-                send.setType(Intent.ACTION_SEND);
+                send.setAction(Intent.ACTION_SEND);
                 send.putExtra(Intent.EXTRA_TEXT,url);
                 send.setType("text/plain");
                 startActivity(Intent.createChooser(send,"Share File"));

@@ -2,18 +2,20 @@ package com.dipakkr.github.giffer.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.util.TypedValue;
 import android.widget.Toast;
 
 import com.dipakkr.github.giffer.R;
 import com.dipakkr.github.giffer.adapter.RecyclerAdapter;
 import com.dipakkr.github.giffer.helper.HttpHandler;
+import com.dipakkr.github.giffer.helper.ItemDecoration;
 import com.dipakkr.github.giffer.model.GifItem;
 
 import org.json.JSONArray;
@@ -34,7 +36,6 @@ public class GifSearch extends AppCompatActivity {
 
     private List<GifItem> gifsearch = new ArrayList<>();
 
-    //int cn=2;
     String fetchurl,query;
     ProgressDialog pdiaglog;
     String TAG="TAG: ";
@@ -45,10 +46,13 @@ public class GifSearch extends AppCompatActivity {
         setContentView(R.layout.activity_gif_search);
 
         recyclerView=(RecyclerView)findViewById(R.id.rv_main);
+        recyclerView.setNestedScrollingEnabled(false);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2);
+        recyclerView.setLayoutManager(gridLayoutManager);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setClipToPadding(true);
         adapter = new RecyclerAdapter(gifsearch,this,R.layout.item_recycler_view);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.addItemDecoration(new ItemDecoration(2,dpToPx(1),true));
         recyclerView.setAdapter(adapter);
 
         Intent i=getIntent();
@@ -93,12 +97,9 @@ public class GifSearch extends AppCompatActivity {
                             JSONObject inmedia=media.getJSONObject(j);
                             JSONObject gif=inmedia.getJSONObject("tinygif");
                             String gifurl = gif.getString("url");
-                            /*HashMap<String,String> hash=new HashMap<>();
-                            hash.put("gifurl",gifurl);
-                            urls.add(hash);*/
+
                             GifItem gifItem = new GifItem(gifurl);
                             gifsearch.add(gifItem);
-                            //Log.e("add",temp.getmImagePath());
                         }
                     }
                 }
@@ -135,19 +136,15 @@ public class GifSearch extends AppCompatActivity {
                 pdiaglog.dismiss();
             }
 
-         /*   ListAdapter adapter=new SimpleAdapter(MainActivity.this,urls,R.layout.temp_layout,new String[]{"gifurl"},new int[]{R.id.temp_disp});
-            lv.setAdapter(adapter);
-            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                   //Toast.makeText(MainActivity.this,urls[position].get(toString()),Toast.LENGTH_SHORT).show();
-                     Picasso.with(MainActivity.this).load("https://media.tenor.com/images/8d7038f55b11b8385fa5d242be0481d9/tenor.gif").into(disp);
-                }
-            });*/
 
             adapter.notifyDataSetChanged();
 
         }
+    }
+
+
+    public  int dpToPx(int dp) {
+        Resources r = getResources();
+        return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
     }
 }
