@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#455a64</color>
-    <color name="colorPrimaryDark">#37474f</color>
+    <color name="colorPrimary">#02092e</color>
+    <color name="colorPrimaryDark">#00072b</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorTabSelected">#4c586e</color>
 
@@ -10,5 +10,8 @@
     <color name="pic2">#eb84c784</color>
     <color name="pic3">#d852b8eb</color>
     <color name="pic4">#f2f5fcfb</color>
+
+    <color name="cpr">#57314751</color>
+    <color name="cprd">#b1465d68</color>
 
 </resources>

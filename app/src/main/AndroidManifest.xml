@@ -34,7 +34,11 @@
             android:excludeFromRecents="true"
             android:theme="@style/Theme.AppCompat.Dialog"/>
 
-    </application>
+        <activity android:name=".activity.WallpaperDetail"
+            android:label="WallPaper"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.ActionBar.Transparent"/>
 
+    </application>
 
 </manifest>

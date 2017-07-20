@@ -50,8 +50,7 @@ public class WallPaperRecyclerAdapter extends RecyclerView.Adapter<WallPaperRecy
 
         String BASE_URL = "https://image.tmdb.org/t/p/w500";
 
-        String TEST_URL = "https://images.unsplash.com/photo-1465865523598-a834aac5d3fa?ixlib=rb-0.3.5" +
-                "&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&s=f7984651545f9054e7803bb0dcae91e4";
+        String TEST_URL = "https://images.unsplash.com/photo-1465865523598-a834aac5d3fa?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&s=f7984651545f9054e7803bb0dcae91e4";
 
 
         Glide.with(context).load(TEST_URL)

@@ -34,9 +34,9 @@ public class WallPaperTabAdapter extends FragmentPagerAdapter {
 
         switch (position){
 
-            case 0 : return new PopularFragment();
+            case 0 : return new LatestFragment();
 
-            case 1 : return new LatestFragment();
+            case 1 : return new PopularFragment();
 
             case 2 : return new TopRatedFragment();
 
