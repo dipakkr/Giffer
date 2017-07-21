@@ -59,7 +59,7 @@ public class GifActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gif);
 
-        setTitle("Giffer-Gifs");
+        setTitle("Gifs");
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
